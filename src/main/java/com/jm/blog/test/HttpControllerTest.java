@@ -13,10 +13,22 @@ import lombok.Delegate;
 //사용자가 요청 -> 응답(HTML 파일)
 //@Controller
 
-//사용자가 요청 -> 응답(Data)
+//사용자가 요청 -> 응답(Data)f
 @RestController
 public class HttpControllerTest {
 
+	private static final String TAG = "HttpContrllerTest";
+	
+	// 
+	@GetMapping("/http/lombok")
+	private String lombokTest(Member m) {
+		System.out.println(TAG + "getter : " +m.getId());
+		m.setId(5000);
+		System.out.println(TAG + "setter : " +m.getId());
+		Member m1 = new Member(1,"hi","password","email");
+		Member m2 = new Member();
+		return "get test : "+ m.getId() +" username : "+m.getUsername()+" passwrod : " +m.getPassword()+" email : " +m.getEmail();
+	}
 	@GetMapping("/http/get")
 	public String getTest(Member m) {
 		return "get test : "+ m.getId() +" username : "+m.getUsername()+" passwrod : " +m.getPassword()+" email : " +m.getEmail();
