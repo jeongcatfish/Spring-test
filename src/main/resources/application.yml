@@ -19,10 +19,10 @@ spring:
     username: jm
     password: 1q2w3E4R
     
-  jpa:
+  jpa: 
     open-in-view: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       use-new-id-generator-mappings: false
