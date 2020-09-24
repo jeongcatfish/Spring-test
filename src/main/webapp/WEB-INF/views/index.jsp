@@ -1,41 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 
 <div class="container">
 	<!DOCTYPE html>
 	<html lang="en">
 <head>
-<title>Bootstrap Example</title>
+<title>BE</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 </head>
 <body>
 
 	<%@ include file="layout/header.jsp"%>
 	<div class="container">
-		<h2>Card Image</h2>
-		<div class="card m-1"">
-			<div class="card-body">
-				<h4 class="card-title">제목</h4>
-				<a href="#" class="btn btn-primary">상세보기</a>
+		<c:forEach var="board" items="${boards.content}">
+			<div class="card m-1"">
+				<div class="card-body">
+					<h4 class="card-title">${board.title}</h4>
+					<a href="/blog/board/${board.id}" class="btn btn-prima ry">상세보기</a>
+				</div>
 			</div>
-		</div>
-		<div class="card m-1"">
-			<div class="card-body">
-				<h4 class="card-title">제목</h4>
-				<p class="card-text">내용 부분</p>
-				<a href="#" class="btn btn-primary">상세보기</a>
-			</div>
-		</div>
-		<div class="card m-1"">
-			<div class="card-body">
-				<h4 class="card-title">제목</h4>
-				<p class="card-text">내용 부분</p>
-				<a href="#" class="btn btn-primary">상세보기</a>
-			</div>
-		</div>
+		</c:forEach>
+		<ul class="pagination d-flex">
+			<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+			<li class="page-item"><a class="page-link" href="#">Next</a></li>
+		</ul>
 	</div>
 
 </body>

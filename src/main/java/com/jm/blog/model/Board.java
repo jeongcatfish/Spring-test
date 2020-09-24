@@ -38,12 +38,12 @@ public class Board {
 	
 	@Lob // 대용량 데이터
 	private String content; //html태그가 섞여서 디자인 됨.
-	@ColumnDefault("0")
+
 	private int count; // 조회수
 	
-	@ManyToOne // Many = Board, One = User 
-	@JoinColumn(name ="userId")
-	private pUser userId; //DB는 오브젝트를 저장할 수 없다. FK(foreign key), 자바, 오브젝트 저장할 수 있다.
+//	@ManyToOne // Many = Board, One = User 
+//	@JoinColumn(name ="userId")
+//	private pUser userId; //DB는 오브젝트를 저장할 수 없다. FK(foreign key), 자바, 오브젝트 저장할 수 있다.
 	
 	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER) // mappedBy 연관관계의 주인이 아니다(난 FK키 아님) DB에 컬룸을 만들지 마세요.
 	private List<Reply> reply; //하나의 게시글을 여러개의 리플을 달 수 있다.
