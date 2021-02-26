@@ -15,8 +15,13 @@ public class BeaconController {
 	
 	@GetMapping("/beacon")
 	public String getBeacone(Model model) {
-		System.out.println("DDDDDDDDD");
+		System.out.println("test page loaded");
 		model.addAttribute("beacons",beaconService.ListOfBeacon());
 		return "beacon/beacon";
+	}
+	
+	@GetMapping("/test_seg")
+	public String test_seg(){
+		return "test_seg";
 	}
 }

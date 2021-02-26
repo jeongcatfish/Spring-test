@@ -49,7 +49,6 @@ table {
 					<td id = "${beacon.id}status">${beacon.status}</td>
 				</tr>
 			</c:forEach>
-
 		</tbody>
 	</table>
 <img id="wea" src="" alt="My Image">

@@ -29,11 +29,11 @@ public class BoardController {
 		return "index"; // viewResolver 작동 
 	}
 	
-	/*
-	 * @GetMapping("/index2") public String index2(Model model) {
-	 * model.addAttribute("boards", boardService.ListOfArticles()); return "index2";
-	 * }
-	 */
+	
+//	  @GetMapping("/index2") public String index2(Model model) {
+//	 model.addAttribute("boards", boardService.ListOfArticles()); return "index2";
+//	  }
+	 
 	
 	@GetMapping("/board/{id}")
 	public String findById(@PathVariable int id, Model model) {
