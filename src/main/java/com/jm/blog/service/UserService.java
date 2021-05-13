@@ -4,9 +4,11 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jm.blog.model.RoleType;
 import com.jm.blog.model.pUser;
 import com.jm.blog.repository.UserRepository;
 
@@ -15,23 +17,28 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-
+	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+	
 	@Transactional
-	public int 회원가입(pUser user) {
+	public void join(pUser user) {
 		try {
+			String rawPassword = user.getPassword(); 
+			String encPassword = encoder.encode(rawPassword);
+			user.setRole(RoleType.USER);
+			user.setPassword(encPassword);
 			userRepository.save(user);
-			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("UserService 회원가입 Func : " + e.getMessage());
 		}
-		return -1;
 	}
 
-	@Transactional(readOnly = true) // SELECT 할 때 트랜잭션 시작, 서비스 종료시에 트랜잭션 종료(정합성)
-	public pUser login(pUser user) {
-		return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
-	}
+//	@Transactional(readOnly = true) // SELECT 할 때 트랜잭션 시작, 서비스 종료시에 트랜잭션 종료(정합성)
+//	public pUser login(pUser user) {
+//		return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+//	}
 	
 	@Transactional
 	public void AddUser(pUser user) {

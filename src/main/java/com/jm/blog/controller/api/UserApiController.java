@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,13 +25,14 @@ public class UserApiController {
 	@Autowired
 	private UserService userService;
 	
-	@PostMapping("/api/user")
+	
+	
+	@PostMapping("/auth/joinProc")
 	public ResponseDto<Integer> save(@RequestBody pUser user) {
 		System.out.println("user save call");
-		//실제로 DB에 insert하고 아래에 return.
-		user.setRole(RoleType.USER);
-		int reulst = userService.회원가입(user);
-		return new ResponseDto<Integer>(HttpStatus.OK,reulst);
+		//실제로 DB에 insert하고 아래에 return
+		userService.join(user);
+		return new ResponseDto<Integer>(HttpStatus.OK,1);
 	}
 	
 	//TEST
@@ -40,19 +42,18 @@ public class UserApiController {
 		return new ResponseDto<List>(HttpStatus.OK,list);
 	}
 	
-	@PostMapping("/api/user/login")
-	public ResponseDto<Integer> login(@RequestBody pUser user, HttpSession session){
-		System.out.println("log in in in");
-		pUser principal = userService.login(user);
-		if(principal != null) {
-			session.setAttribute("principal", principal);
-			System.out.println("session connected session connected ");
-		}
-		else {
-			System.out.println("session connect fail");
-		}
-			
-		return new ResponseDto<Integer>(HttpStatus.OK,1);
-	}
+//	@PostMapping("/api/user/login")
+//	public ResponseDto<Integer> login(@RequestBody pUser user, HttpSession session){
+//		System.out.println("log in in in");
+//		pUser principal = userService.login(user);
+//		if(principal != null) {
+//			session.setAttribute("principal", principal);
+//			System.out.println("session connected session connected ");
+//		}
+//		else {
+//			System.out.println("session connect fail");
+//		}
+//		return new ResponseDto<Integer>(HttpStatus.OK,1);
+//	}
 	
 }
