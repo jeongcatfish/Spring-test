@@ -21,8 +21,9 @@ public class BoardService {
 	private BoardRepository boardRepository;
 
 	@Transactional
-	public void write(Board board) {
+	public void write(Board board, pUser user) {
 		board.setCount(0);
+		board.setUser(user);
 		boardRepository.save(board);
 	}
 

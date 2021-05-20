@@ -143,8 +143,8 @@ function getWeather(){
 $(document).ready(function() {
 	window.setInterval(function(){
 		loopingTest();
-		getData();
-		getWeather();
+		//getData();
+		//getWeather();
 	},2000);
 });
 

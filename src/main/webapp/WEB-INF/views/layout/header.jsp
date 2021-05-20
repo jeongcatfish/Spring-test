@@ -4,7 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <sec:authorize access="!isAuthenticated()">
-  <script>alert("login");</script>
+  <script>console.log("isAuthenticated false")</script>
 </sec:authorize>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal"/>
@@ -56,7 +56,7 @@
 						<li class="nav-item"><a class="nav-link"
 							href=" /board/saveForm">글쓰기</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/user/joinForm">회원정보</a></li>
+							href="/user/updateForm">회원정보</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/board/logout">로그아웃</a></li>
 					</ul>

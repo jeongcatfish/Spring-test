@@ -33,7 +33,7 @@
     });
   </script>
 	<!-- src "/" : static폴더를 기본으로 찾아감. -->
-	<script src="/blog/js/border.js"></script>
+	<script src="/js/border.js"></script>
 </body>
 
 
